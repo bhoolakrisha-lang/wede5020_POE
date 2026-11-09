@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar - Kazi's Goju-Ryu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+
+<header class="top-header" style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,#600000,#000);padding:10px 15px;color:white;">
+  <div class="header-left" style="display:flex;align-items:center;gap:8px;">
+    <img src="images/KarateLogo.png" alt="Logo" class="logo-img" style="width:35px;height:35px;border-radius:50%;">
+    <div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><br><span style="font-size:9px;">Karate Club</span></div>
+  </div>
+  <nav class="main-nav">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="history.html">History</a>
+    <a href="calendar.html" class="active">Calender</a>
+    <a href="fees.html">Fees</a>
+    <a href="register.html">Register</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-right" style="display:flex;align-items:center;gap:8px;font-size:12px;">
+    <span class="user-icon" style="width:18px;height:18px;background:white;border-radius:50%;display:inline-block;"></span>
+    <span id="headerUsername">Guest</span>
+    <button id="authBtn" style="background:#a00;border:none;color:white;font-size:9px;padding:4px 10px;border-radius:12px;cursor:pointer;margin-left:6px;">Log In</button>
+  </div>
+
+  <script>
+    // SAVES USERNAME + LOGOUT + GUEST ON EACH PAGE CORNER
+    (function(){
+      const header = document.currentScript.parentElement;
+      const nameEl = header.querySelector('#headerUsername');
+      const btn = header.querySelector('#authBtn');
+      const saved = localStorage.getItem('kazi_username');
+
+      function updateHeader(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          nameEl.textContent = current;
+          btn.textContent = 'Logout';
+          btn.style.background = '#333';
+        } else {
+          nameEl.textContent = 'Guest';
+          btn.textContent = 'Log In';
+          btn.style.background = '#a00';
+        }
+      }
+
+      updateHeader();
+
+      btn.addEventListener('click', function(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          // LOGOUT - Become Guest
+          localStorage.removeItem('kazi_username');
+          updateHeader();
+        } else {
+          // GO TO LOGIN
+          window.location.href = 'signin.html';
+        }
+      });
+    })();
+  </script>
+</header>
+<main class="calendar-main">
+  <div class="cal-info-bar">
+    <h2>Yearly Calender</h2>
+    <p>Over here is the Dojo's Yearly calender where the Dojo's plans for the year is set out. There will be updates throughout the year.</p>
+    <p>All you have to do is on your left hand side, choose the month and select the date. On the eight hand side, you can see if there is or is not an event that day.</p>
+  </div>
+  <div class="cal-container">
+    <div class="cal-left">
+      <div class="cal-header"><div class="cal-year" id="calYear">2026</div><div class="cal-month-row"><span id="calMonth">September</span><div class="cal-arrows"><button id="prevMonth">◀</button><button id="nextMonth">▶</button></div></div></div>
+      <div class="cal-grid-header"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-year-switch"><button id="prevYear">◀ Year</button><button id="nextYear">Year ▶</button></div>
+    </div>
+    <div class="cal-right">
+      <h2>The Days Events</h2>
+      <div class="event-date" id="eventDate">2026 . 09 . 26</div>
+      <div class="event-title" id="eventTitle">Charity day event</div>
+      <div class="event-doc" id="eventDoc"><a href="docs/charity-list.pdf" target="_blank" class="pdf-link"><span class="pdf-icon">PDF</span> Charity list.doc</a></div>
+      <ul class="event-details" id="eventDetails"><li>You can bring anything on this list</li><li>From 07:45 - 10:45 AM Saturday, on this day</li><li>Location: Darul Uloom, Claudius, South Africa</li></ul>
+      <div class="no-event" id="noEvent" style="display:none;">No event for this day</div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-col logo-col">
+    <div class="footer-logo"><img src="images/KarateLogo.png" alt=""><div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><span>Karate Club</span></div></div>
+    <p class="footer-desc">The club started in 2001 and is still on going to this day. The club trains kids and adults, no matter what age you are.</p>
+    <div class="social-icons">
+      <span class="soc"><img src="images/media/instagram.png" alt=""><a href="https://www.instagram.com/kazis.karate/"></a></span>
+      <span class="soc"><img src="images/media/email.png" alt=""></span>
+      <span class="soc"><img src="images/media/whatsapp.png" alt=""><a href="kazikaratetech@gmailcom"></a></span>      
+      </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">• Home</a>
+    <a href="about.html">• About</a>
+    <a href="history.html">• History</a>
+    <a href="calendar.html">• Calender</a>
+    <a href="fees.html">• Fees</a>
+    <a href="register.html">• Reagester</a>
+    <a href="gallery.html">• Gallery</a>
+    <a href="blog.html">• Blog</a>
+    <a href="contact.html">• Contact Us</a>
+  </div>
+  <div class="footer-col">
+    <h4>Classes</h4>
+    <p class="class-day">Monday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult black belt</p>
+    <br>
+    <p class="class-day">Wednesday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult to black belt</p>
+    <br>
+    <p class="class-day">Saturday</p>
+      <p>07:45 - 09:00 - Junior - Black belt</p>
+      <p>09:00 - 10:00 - Kids</p>
+      <p>09:45 - 10:00 - What to proper belt</p>
+      <p>10:00 - 11:00 - Grading to proper belt</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>📍 Darul Uloom, Pretoria Multan st, Claudius  </p>
+    <p><img src="images/media/whatsapp.png" alt=""> +27 82 550 1830</p>
+    <p><img src="images/media/email.png" alt="">kazikaratetech@gmailcom<p>
+  </div>
+</footer>
+
+<script>
+const events={"2026-09-26":{title:"Charity day event",doc:"Charity list.doc",docLink:"docs/charity-list.pdf",details:["You can bring anything on this list","From 07:45 - 10:45 AM Saturday, on this day","Location: Darul Uloom, Claudius, South Africa"]},"2026-09-27":{title:"Grading Day",doc:"Grading list.pdf",docLink:"docs/grading.pdf",details:["09:00 - 11:00 Grading","Bring full Gi and belt","Location: Dojo Danville"]},"2026-12-10":{title:"Year End Function",doc:"Year End.pdf",docLink:"docs/year-end.pdf",details:["Family day and awards","Time: 10:00 AM"]}};
+let currentDate=new Date(2026,8,26),selectedDate=new Date(2026,8,26);const monthNames=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function renderCalendar(){const y=currentDate.getFullYear(),m=currentDate.getMonth();document.getElementById('calYear').textContent=y;document.getElementById('calMonth').textContent=monthNames[m];const first=new Date(y,m,1),last=new Date(y,m+1,0),days=last.getDate();let start=first.getDay();start=start===0?6:start-1;const grid=document.getElementById('calGrid');grid.innerHTML='';for(let i=0;i<start;i++){const e=document.createElement('div');e.className='cal-day empty';grid.appendChild(e);}for(let d=1;d<=days;d++){const el=document.createElement('div');el.className='cal-day';el.textContent=d;const str=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;if(events[str])el.classList.add('has-event');if(selectedDate&&d===selectedDate.getDate()&&m===selectedDate.getMonth()&&y===selectedDate.getFullYear())el.classList.add('selected');el.addEventListener('click',()=>{selectedDate=new Date(y,m,d);showEvent(str);renderCalendar();});grid.appendChild(el);}}
+function showEvent(str){const [y,m,d]=str.split('-');document.getElementById('eventDate').textContent=`${y} . ${m} . ${d}`;const ev=events[str],t=document.getElementById('eventTitle'),doc=document.getElementById('eventDoc'),det=document.getElementById('eventDetails'),no=document.getElementById('noEvent');if(ev){t.textContent=ev.title;doc.innerHTML=`<a href="${ev.docLink}" target="_blank" class="pdf-link"><span class="pdf-icon">PDF</span> ${ev.doc}</a>`;det.innerHTML=ev.details.map(x=>`<li>${x}</li>`).join('');t.style.display='block';doc.style.display='block';det.style.display='block';no.style.display='none';}else{t.style.display='none';doc.style.display='none';det.style.display='none';no.style.display='block';}}
+document.getElementById('prevMonth').onclick=()=>{currentDate.setMonth(currentDate.getMonth()-1);renderCalendar();};document.getElementById('nextMonth').onclick=()=>{currentDate.setMonth(currentDate.getMonth()+1);renderCalendar();};document.getElementById('prevYear').onclick=()=>{currentDate.setFullYear(currentDate.getFullYear()-1);renderCalendar();};document.getElementById('nextYear').onclick=()=>{currentDate.setFullYear(currentDate.getFullYear()+1);renderCalendar();};renderCalendar();showEvent("2026-09-26");
+</script>
+</body>
+</html>
+
+<script>
+// THIS SHOWS THE SAVED USERNAME IN YOUR CIRCLED AREA
+function updateHeaderUsername(){
+  const savedName = localStorage.getItem('kazi_username');
+  const headerName = document.getElementById('headerUsername');
+  if(headerName && savedName){
+    headerName.textContent = savedName;
+  }
+}
+updateHeaderUsername();
+
+// Optional: logout
+function logout(){
+  localStorage.removeItem('kazi_username');
+  document.getElementById('headerUsername').textContent = 'username';
+  window.location.href = 'signin.html';
+}
+</script>
+
+<!--
+REFERENCES - Harvard Style1. Code Structure & LanguagesMozilla Developer Network (MDN) (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) CSS: Cascading Style Sheets. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) JavaScript Guide. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 9 November 2026).W3Schools (2026) HTML Tutorial. Available at: https://www.w3schools.com/html/ (Accessed: 9 November 2026).W3Schools (2026) CSS Tutorial. Available at: https://www.w3schools.com/css/ (Accessed: 9 November 2026).2. Layout & Design ImplementationW3Schools (2026) CSS Grid Layout. Used for blog-layout grid-template-columns:130px 1fr and contact contact-grid. Available at: https://www.w3schools.com/css/css_grid.asp (Accessed: 9 November 2026).W3Schools (2026) CSS Flexbox. Used for header, footer, year-carousel and image carousel alignment. Available at: https://www.w3schools.com/css/css3_flexbox.asp (Accessed: 9 November 2026).MDN (2026) backdrop-filter: blur(). Used for Page 4 write-up modal background blur effect. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter (Accessed: 9 November 2026).3. Specific Features You Asked ForA. Blog Pages 1-4:MDN (2026) scrollIntoView() and scrollBy(). Used for year carousel arrows scrollBy({left:100, behavior:'smooth'}) and image carousel centering. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView (Accessed: 9 November 2026).W3Schools (2026) How To Create a Modal. Used for Page 4 - click write-up to read full + click anywhere away from box to exit. Available at: https://www.w3schools.com/howto/howto_css_modals.asp (Accessed: 9 November 2026).B. Contact Us Page - Validation Rules:MDN (2026) Regular Expressions. Used for phone 10 numbers only validation /^\d{10}$/ and email @ check includes('@'). Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions (Accessed: 9 November 2026).W3Schools (2026) How To Create Custom Select Boxes. Used for dropdown with 2 options Enquiry / Comment. Available at: https://www.w3schools.com/howto/howto_custom_select.asp (Accessed: 9 November 2026).W3Schools (2026) JavaScript Form Validation. Used for same fill-in rules as register page, required red border required-input. Available at: https://www.w3schools.com/js/js_validation.asp (Accessed: 9 November 2026).C. Gallery / Images Page 3:MDN (2026) CSS object-fit: cover. Used for b-img-card img and grid-img img to keep images uniform. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit (Accessed: 9 November 2026).CSS Tricks (2026) A Complete Guide to CSS Gradients. Used for linear-gradient(to bottom,#500000,#000) backgrounds on write-up boxes. Available at: https://css-tricks.com/css3-gradients/ (Accessed: 9 November 2026).4. Content & Club InformationKazi's Goju-Ryu Karate Club (2001-2026) Official Club Information. Danville, Pretoria - classes, history, contact details provided by client screenshots. International Karate Association (2026) Goju-Ryu Terminology - Gasshuku, Kaikos, Grading. Used for blog topics definitions.5. Tools UsedVisual Studio Code (2026) Microsoft. Code editor used to develop HTML/CSS/JS.Google Chrome DevTools (2026) Used for testing responsive design @media(max-width:700px).REFERENCING FOR YOUR REPORT - In TextIf you need to reference in your report body, use this:The blog page layout was created using CSS Grid (W3Schools, 2026) with a 130px sidebar for blog navigation and 1fr for content. The year carousel uses Flexbox for alignment and scrollBy() with smooth behaviour for arrow navigation (MDN, 2026). The write-up modal on Page 4 was implemented using a fixed position overlay with backdrop-filter blur, where clicking outside the box closes it (W3Schools, 2026).The contact page validation was implemented using JavaScript Regular Expressions (MDN, 2026) to ensure the email contains an @ symbol and the phone number is exactly 10 numeric digits only, with custom select box for message type (W3Schools, 2026).-->

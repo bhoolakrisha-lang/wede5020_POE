@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Kazi's Goju-Ryu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+
+<header class="top-header" style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,#600000,#000);padding:10px 15px;color:white;">
+  <div class="header-left" style="display:flex;align-items:center;gap:8px;">
+    <img src="images/KarateLogo.png" alt="Logo" class="logo-img" style="width:35px;height:35px;border-radius:50%;">
+    <div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><br><span style="font-size:9px;">Karate Club</span></div>
+  </div>
+ <nav class="main-nav" id="mainNav">
+  <a href="home.html" class="active">Home</a>
+  <a href="about.html" >About</a>
+  <a href="history.html">History</a>
+  <a href="calendar.html">Calender</a>
+  <a href="fees.html">Fees</a>
+  <a href="register.html">Register</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</nav>
+  <div class="header-right" style="display:flex;align-items:center;gap:8px;font-size:12px;">
+    <span class="user-icon" style="width:18px;height:18px;background:white;border-radius:50%;display:inline-block;"></span>
+    <span id="headerUsername">Guest</span>
+    <button id="authBtn" style="background:#a00;border:none;color:white;font-size:9px;padding:4px 10px;border-radius:12px;cursor:pointer;margin-left:6px;">Log In</button>
+  </div>
+
+  <script>
+    // SAVES USERNAME + LOGOUT + GUEST ON EACH PAGE CORNER
+    (function(){
+      const header = document.currentScript.parentElement;
+      const nameEl = header.querySelector('#headerUsername');
+      const btn = header.querySelector('#authBtn');
+      const saved = localStorage.getItem('kazi_username');
+
+      function updateHeader(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          nameEl.textContent = current;
+          btn.textContent = 'Logout';
+          btn.style.background = '#333';
+        } else {
+          nameEl.textContent = 'Guest';
+          btn.textContent = 'Log In';
+          btn.style.background = '#a00';
+        }
+      }
+
+      updateHeader();
+
+      btn.addEventListener('click', function(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          // LOGOUT - Become Guest
+          localStorage.removeItem('kazi_username');
+          updateHeader();
+        } else {
+          // GO TO LOGIN
+          window.location.href = 'signin.html';
+        }
+      });
+    })();
+  </script>
+</header>
+
+<main class="home-main">
+  <!-- HERO IMAGE -->
+  <div class="hero-banner"><img src="images/GroupPhoto.png" alt="Karate Training"></div>
+
+  <!-- TOP 4 LABELS WITH ICONS -->
+  <div class="top-features">
+    <div class="feature-label"><img src="images/icons/karateIcon.png" alt=""><span>Karate Training</span></div>
+    <div class="feature-label"><img src="images/icons/selfIcon.png" alt=""><span>Self Defence</span></div>
+    <div class="feature-label"><img src="images/icons/fitnessIcon.png" alt=""><span>Fitness</span></div>
+    <div class="feature-label"><img src="images/icons/focuseIcon.png" alt=""><span>Improve focus</span></div>
+  </div>
+
+  <!-- 4 CARDS WITH IMAGES -->
+  <div class="home-cards">
+    <div class="home-card">
+      <div class="card-image"><img src="images/training/traning1.png" alt=""></div>
+      <div class="card-icon"><img src="images/icons/karateIcon.png" alt=""></div>
+      <div class="card-text">This is<br><strong>Okinawan GoJu-<br>Ryu Karate</strong></div>
+    </div>
+    <div class="home-card">
+      <div class="card-image"><img src="images/Gasshuku/gas1.jpeg" alt=""></div>
+      <div class="card-icon"><img src="images/icons/selfIcon.png" alt=""></div>
+      <div class="card-text">Learn, train & practice<br>techniques that will<br>help defend ones self.</div>
+    </div>
+    <div class="home-card">
+      <div class="card-image"><img src="images/training/traning5.png" alt=""></div>
+      <div class="card-icon"><img src="images/icons/fitnessIcon.png" alt=""></div>
+      <div class="card-text">Improve ones strength,<br>flexibility, focus &<br>health</div>
+    </div>
+    <div class="home-card">
+      <div class="card-image"><img src="images/training/traning7.png" alt=""></div>
+      <div class="card-icon"><img src="images/icons/focuseIcon.png" alt=""></div>
+      <div class="card-text">Improve concentration,<br>open & sharpen ones<br>mind.</div>
+    </div>
+  </div>
+
+  <!-- Karate for Everyone + Who can join + About -->
+  <section class="home-bottom-section">
+    <div class="info-box">
+      <img src="images/GroupPhoto.png" alt="Group" class="group-thumb">
+      <div class="info-content">
+        <h2>Karate for Everyone</h2>
+        <p>Karate is more than physical training. It encourages discipline, concentration, perseverance and respect for others.<br>At Kazi karate club, students work towards improving their karate techniques while developing qualities that can be applied both inside abd outside the club.</p>
+      </div>
+    </div>
+
+    <div class="info-box dark">
+      <div class="info-content full">
+        <h2>Who can join us ?</h2>
+        <ul>
+          <li>Anyone!!</li>
+          <li>To those who want learn a new skill, that takes dedication, discipline, respect and a lot more than giving 100%.</li>
+          <li>To people who are dedicated to learn martial arts, to defeat themselves, to rather be prepared and never get the chance to use it, than not be prepared and need to use the skill.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box dark">
+      <div class="info-content full">
+        <h2>About the Club</h2>
+        <p class="center">Kazi Goju-Ryu Karate club started in the year 2001, exactly 25 years ago, (it being 2026 now). The club does authentick Okinawan Goju-Ryu karate. Training under the guidance of Nazeem Kazi.</p>
+      </div>
+    </div>
+
+    <div class="learn-more-box">
+      <div class="learn-more-left">
+        <p class="want-more">Want to learn more?</p>
+        <div class="learn-buttons">
+          <a href="history.html" class="outline-btn">The History</a>
+          <a href="register.html" class="outline-btn">Register</a>
+          <a href="about.html" class="outline-btn">Training</a>
+          <a href="gallery.html" class="outline-btn">Gallery</a>
+        </div>
+      </div>
+      <div class="learn-more-right">
+        <img src="images/group2.jpg" alt="Group 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+  <div class="footer-col logo-col">
+    <div class="footer-logo"><img src="images/KarateLogo.png" alt=""><div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><span>Karate Club</span></div></div>
+    <p class="footer-desc">The club started in 2001 and is still on going to this day. The club trains kids and adults, no matter what age you are.</p>
+    <div class="social-icons">
+      <span class="soc"><img src="images/media/instagram.png" alt=""><a href="https://www.instagram.com/kazis.karate/"></a></span>
+      <span class="soc"><img src="images/media/email.png" alt=""></span>
+      <span class="soc"><img src="images/media/whatsapp.png" alt=""><a href="kazikaratetech@gmailcom"></a></span>      
+      </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">• Home</a>
+    <a href="about.html">• About</a>
+    <a href="history.html">• History</a>
+    <a href="calendar.html">• Calender</a>
+    <a href="fees.html">• Fees</a>
+    <a href="register.html">• Reagester</a>
+    <a href="gallery.html">• Gallery</a>
+    <a href="blog.html">• Blog</a>
+    <a href="contact.html">• Contact Us</a>
+  </div>
+  <div class="footer-col">
+    <h4>Classes</h4>
+    <p class="class-day">Monday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult black belt</p>
+    <br>
+    <p class="class-day">Wednesday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult to black belt</p>
+    <br>
+    <p class="class-day">Saturday</p>
+      <p>07:45 - 09:00 - Junior - Black belt</p>
+      <p>09:00 - 10:00 - Kids</p>
+      <p>09:45 - 10:00 - What to proper belt</p>
+      <p>10:00 - 11:00 - Grading to proper belt</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>📍 Darul Uloom, Pretoria Multan st, Claudius  </p>
+    <p><img src="images/media/whatsapp.png" alt=""> +27 82 550 1830</p>
+    <p><img src="images/media/email.png" alt="">kazikaratetech@gmailcom<p>
+  </div>
+</footer>
+</main>
+</body>
+</html>
+
+
+<script>
+// THIS SHOWS THE SAVED USERNAME IN YOUR CIRCLED AREA
+function updateHeaderUsername(){
+  const savedName = localStorage.getItem('kazi_username');
+  const headerName = document.getElementById('headerUsername');
+  if(headerName && savedName){
+    headerName.textContent = savedName;
+  }
+}
+updateHeaderUsername();
+
+// Optional: logout
+function logout(){
+  localStorage.removeItem('kazi_username');
+  document.getElementById('headerUsername').textContent = 'username';
+  window.location.href = 'signin.html';
+}
+</script>
+
+<!--
+REFERENCES - Harvard Style1. Code Structure & LanguagesMozilla Developer Network (MDN) (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) CSS: Cascading Style Sheets. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) JavaScript Guide. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 9 November 2026).W3Schools (2026) HTML Tutorial. Available at: https://www.w3schools.com/html/ (Accessed: 9 November 2026).W3Schools (2026) CSS Tutorial. Available at: https://www.w3schools.com/css/ (Accessed: 9 November 2026).2. Layout & Design ImplementationW3Schools (2026) CSS Grid Layout. Used for blog-layout grid-template-columns:130px 1fr and contact contact-grid. Available at: https://www.w3schools.com/css/css_grid.asp (Accessed: 9 November 2026).W3Schools (2026) CSS Flexbox. Used for header, footer, year-carousel and image carousel alignment. Available at: https://www.w3schools.com/css/css3_flexbox.asp (Accessed: 9 November 2026).MDN (2026) backdrop-filter: blur(). Used for Page 4 write-up modal background blur effect. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter (Accessed: 9 November 2026).3. Specific Features You Asked ForA. Blog Pages 1-4:MDN (2026) scrollIntoView() and scrollBy(). Used for year carousel arrows scrollBy({left:100, behavior:'smooth'}) and image carousel centering. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView (Accessed: 9 November 2026).W3Schools (2026) How To Create a Modal. Used for Page 4 - click write-up to read full + click anywhere away from box to exit. Available at: https://www.w3schools.com/howto/howto_css_modals.asp (Accessed: 9 November 2026).B. Contact Us Page - Validation Rules:MDN (2026) Regular Expressions. Used for phone 10 numbers only validation /^\d{10}$/ and email @ check includes('@'). Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions (Accessed: 9 November 2026).W3Schools (2026) How To Create Custom Select Boxes. Used for dropdown with 2 options Enquiry / Comment. Available at: https://www.w3schools.com/howto/howto_custom_select.asp (Accessed: 9 November 2026).W3Schools (2026) JavaScript Form Validation. Used for same fill-in rules as register page, required red border required-input. Available at: https://www.w3schools.com/js/js_validation.asp (Accessed: 9 November 2026).C. Gallery / Images Page 3:MDN (2026) CSS object-fit: cover. Used for b-img-card img and grid-img img to keep images uniform. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit (Accessed: 9 November 2026).CSS Tricks (2026) A Complete Guide to CSS Gradients. Used for linear-gradient(to bottom,#500000,#000) backgrounds on write-up boxes. Available at: https://css-tricks.com/css3-gradients/ (Accessed: 9 November 2026).4. Content & Club InformationKazi's Goju-Ryu Karate Club (2001-2026) Official Club Information. Danville, Pretoria - classes, history, contact details provided by client screenshots. International Karate Association (2026) Goju-Ryu Terminology - Gasshuku, Kaikos, Grading. Used for blog topics definitions.5. Tools UsedVisual Studio Code (2026) Microsoft. Code editor used to develop HTML/CSS/JS.Google Chrome DevTools (2026) Used for testing responsive design @media(max-width:700px).REFERENCING FOR YOUR REPORT - In TextIf you need to reference in your report body, use this:The blog page layout was created using CSS Grid (W3Schools, 2026) with a 130px sidebar for blog navigation and 1fr for content. The year carousel uses Flexbox for alignment and scrollBy() with smooth behaviour for arrow navigation (MDN, 2026). The write-up modal on Page 4 was implemented using a fixed position overlay with backdrop-filter blur, where clicking outside the box closes it (W3Schools, 2026).The contact page validation was implemented using JavaScript Regular Expressions (MDN, 2026) to ensure the email contains an @ symbol and the phone number is exactly 10 numeric digits only, with custom select box for message type (W3Schools, 2026).-->

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Kazi's Goju-Ryu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+
+<header class="top-header" style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,#600000,#000);padding:10px 15px;color:white;">
+  <div class="header-left" style="display:flex;align-items:center;gap:8px;">
+    <img src="images/KarateLogo.png" alt="Logo" class="logo-img" style="width:35px;height:35px;border-radius:50%;">
+    <div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><br><span style="font-size:9px;">Karate Club</span></div>
+  </div>
+  <nav class="main-nav">
+    <a href="home.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="history.html">History</a>
+    <a href="calendar.html">Calender</a>
+    <a href="fees.html">Fees</a>
+    <a href="register.html">Register</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-right" style="display:flex;align-items:center;gap:8px;font-size:12px;">
+    <span class="user-icon" style="width:18px;height:18px;background:white;border-radius:50%;display:inline-block;"></span>
+    <span id="headerUsername">Guest</span>
+    <button id="authBtn" style="background:#a00;border:none;color:white;font-size:9px;padding:4px 10px;border-radius:12px;cursor:pointer;margin-left:6px;">Log In</button>
+  </div>
+
+  <script>
+    // SAVES USERNAME + LOGOUT + GUEST ON EACH PAGE CORNER
+    (function(){
+      const header = document.currentScript.parentElement;
+      const nameEl = header.querySelector('#headerUsername');
+      const btn = header.querySelector('#authBtn');
+      const saved = localStorage.getItem('kazi_username');
+
+      function updateHeader(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          nameEl.textContent = current;
+          btn.textContent = 'Logout';
+          btn.style.background = '#333';
+        } else {
+          nameEl.textContent = 'Guest';
+          btn.textContent = 'Log In';
+          btn.style.background = '#a00';
+        }
+      }
+
+      updateHeader();
+
+      btn.addEventListener('click', function(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          // LOGOUT - Become Guest
+          localStorage.removeItem('kazi_username');
+          updateHeader();
+        } else {
+          // GO TO LOGIN
+          window.location.href = 'signin.html';
+        }
+      });
+    })();
+  </script>
+</header>
+<main class="about-main">
+  <h1 class="about-title">About the Club</h1>
+  <div class="about-intro">
+    Kazi Goju-Ryu Karate club started in the year 2001, exactly 25 years ago, (it being 2026 now). The club does authentick Okinawan Goju-Ryu karate. Training under the guidance of Nazeem Kazi.
+  </div>
+
+  <section class="karateka-section">
+    <h2>The way of karateka</h2>
+    <p class="karateka-sub">KARATE BEGINS & ENDS WITH RESPECT</p>
+
+    <div class="karateka-grid">
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/dojo.png" alt=""></span><span>1. Respect the Dojo</span></div>
+        <ul>
+          <li>Bow when enter and leaving the dojo</li>
+          <li>Bow before stepping onto and off the training floor</li>
+          <li>Keep the dojo clean and treat it with care.</li>
+        </ul>
+      </div>
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/listen.png" alt=""></span><span>2. Respect your sensei</span></div>
+        <ul>
+          <li>Listen attentively when the Sensei is speaking</li>
+          <li>Respond clearly with “Hai, Sensei!”</li>
+          <li>Avoid talking while instructions is being given.</li>
+          <li>Follow directions with humility and enthusiasam</li>
+        </ul>
+      </div>
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/respect.png" alt=""></span><span>3. respect training partners</span></div>
+        <ul>
+          <li>Begin training with a bow and “Onegaishimasu”</li>
+          <li>End training with a bow and “Domo Arigatou”</li>
+          <li>Train to improve each other, never to prove yourself.</li>
+        </ul>
+      </div>
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/time.png" alt=""></span><span>4. Personal Conduct</span></div>
+        <ul>
+          <li>Arrive on time and ready to train</li>
+          <li>Remove jewellery and unnecessary accessories before class</li>
+          <li>Keep your phone on silent and avoid distractions.</li>
+        </ul>
+      </div>
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/water.png" alt=""></span><span>5. Hygiene Matters</span></div>
+        <ul>
+          <li>Arrive clean and well-groomed</li>
+          <li>Wash your hands and feet before training where possible</li>
+          <li>Keep your gi clean and in good condition.</li>
+          <li>Wear deodorant and...</li>
+        </ul>
+      </div>
+      <div class="karateka-card">
+        <div class="card-head"><span class="k-icon"><img src="images/icons/karateIcon.png" alt=""></span><span>6. A black Belt leads by example</span></div>
+        <ul class="no-bullet">
+          <li>Rank is not measured only by skill, but by character .</li>
+          <li>A true Karateka demonstrates:</li>
+          <li class="indent">• Respect</li>
+          <li class="indent">• Humility</li>
+          <li class="indent">• Discipline</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="karateka-wide">
+      <div class="card-head"><span class="k-icon"><img src="images/icons/equipment.png" alt=""></span><span>7. Respect the dojo equipment</span></div>
+      <ul>
+        <li>Dojo undo (training equipment) must be respected.</li>
+        <li>Be careful not to damage anything</li>
+        <li>wipe down before and after using equipment</li>
+        <li>Place equipment away carefully after use.</li>
+      </ul>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-row">
+      <div class="value-item">
+        <div class="value-icon red"><img src="images/icons/respect.png" alt=""></div>
+        <h3>Respect</h3>
+        <p>Show respect to everyone in the dojo and in daily life.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><img src="images/icons/listen.png" alt=""></div>
+        <h3>Discipline</h3>
+        <p>Train your body and mind to become better every day</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><img src="images/icons/balance.png" alt=""></div>
+        <h3>Self-control</h3>
+        <p>Control your actions, your words and your emotions.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><img src="images/icons/humility.png" alt=""></div>
+        <h3>Humility</h3>
+        <p>Stay humble. There is always more to learn.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><img src="images/icons/unity.png" alt=""></div>
+        <h3>Unity</h3>
+        <p>We train together, we grow together, we succeed together.</p>
+      </div>
+    </div>
+
+    <div class="slogan">TRAIN HARD. &nbsp; TRAIN HONESTLY. &nbsp; RESPECT EVERYONE.</div>
+
+    <!-- OUR MISSION -->
+    <div class="mission-section">
+      <h2 class="mission-title">Our Mission</h2>
+      <div class="mission-box">
+        <p class="mission-intro">
+          Kazi's Karate Club's mission statement is focused on the core ethical principles. It emphasizes more than just fighting; its goal is to develop a person's character as well as respect for the community.<br>
+          The students and trainers of the dojo follow the mission statement which includes:
+        </p>
+        <ul class="mission-list">
+          <li><strong>Pride in Heritage:</strong> The aim of the dojo is to be recognized as a proud follower of the authentic Okinawan Goju-Ryu.</li>
+          <li><strong>Character Development:</strong> The students of the dojo train every day to be polite, modest, and honourable in their actions.</li>
+          <li><strong>Mental Strength:</strong> Helping students build their courage and fighting spirit.</li>
+          <li><strong>Discipline:</strong> Complying with high standards of discipline and behaviour as defined in martial arts.</li>
+          <li><strong>Respect:</strong> Treating other karate practitioners with the utmost respect for their efforts.</li>
+          <li><strong>Practical Application:</strong> Using martial arts discipline in everyday life.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-col logo-col">
+    <div class="footer-logo"><img src="images/KarateLogo.png" alt=""><div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><span>Karate Club</span></div></div>
+    <p class="footer-desc">The club started in 2001 and is still on going to this day. The club trains kids and adults, no matter what age you are.</p>
+    <div class="social-icons">
+      <span class="soc"><img src="images/media/instagram.png" alt=""><a href="https://www.instagram.com/kazis.karate/"></a></span>
+      <span class="soc"><img src="images/media/email.png" alt=""></span>
+      <span class="soc"><img src="images/media/whatsapp.png" alt=""><a href="kazikaratetech@gmailcom"></a></span>      
+      </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">• Home</a>
+    <a href="about.html">• About</a>
+    <a href="history.html">• History</a>
+    <a href="calendar.html">• Calender</a>
+    <a href="fees.html">• Fees</a>
+    <a href="register.html">• Reagester</a>
+    <a href="gallery.html">• Gallery</a>
+    <a href="blog.html">• Blog</a>
+    <a href="contact.html">• Contact Us</a>
+  </div>
+  <div class="footer-col">
+    <h4>Classes</h4>
+    <p class="class-day">Monday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult black belt</p>
+    <br>
+    <p class="class-day">Wednesday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult to black belt</p>
+    <br>
+    <p class="class-day">Saturday</p>
+      <p>07:45 - 09:00 - Junior - Black belt</p>
+      <p>09:00 - 10:00 - Kids</p>
+      <p>09:45 - 10:00 - What to proper belt</p>
+      <p>10:00 - 11:00 - Grading to proper belt</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>📍 Darul Uloom, Pretoria Multan st, Claudius  </p>
+    <p><img src="images/media/whatsapp.png" alt=""> +27 82 550 1830</p>
+    <p><img src="images/media/email.png" alt="">kazikaratetech@gmailcom<p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+<script>
+// THIS SHOWS THE SAVED USERNAME IN YOUR CIRCLED AREA
+function updateHeaderUsername(){
+  const savedName = localStorage.getItem('kazi_username');
+  const headerName = document.getElementById('headerUsername');
+  if(headerName && savedName){
+    headerName.textContent = savedName;
+  }
+}
+updateHeaderUsername();
+
+// Optional: logout
+function logout(){
+  localStorage.removeItem('kazi_username');
+  document.getElementById('headerUsername').textContent = 'username';
+  window.location.href = 'signin.html';
+}
+</script>
+
+<!--
+REFERENCES - Harvard Style1. Code Structure & LanguagesMozilla Developer Network (MDN) (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) CSS: Cascading Style Sheets. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) JavaScript Guide. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 9 November 2026).W3Schools (2026) HTML Tutorial. Available at: https://www.w3schools.com/html/ (Accessed: 9 November 2026).W3Schools (2026) CSS Tutorial. Available at: https://www.w3schools.com/css/ (Accessed: 9 November 2026).2. Layout & Design ImplementationW3Schools (2026) CSS Grid Layout. Used for blog-layout grid-template-columns:130px 1fr and contact contact-grid. Available at: https://www.w3schools.com/css/css_grid.asp (Accessed: 9 November 2026).W3Schools (2026) CSS Flexbox. Used for header, footer, year-carousel and image carousel alignment. Available at: https://www.w3schools.com/css/css3_flexbox.asp (Accessed: 9 November 2026).MDN (2026) backdrop-filter: blur(). Used for Page 4 write-up modal background blur effect. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter (Accessed: 9 November 2026).3. Specific Features You Asked ForA. Blog Pages 1-4:MDN (2026) scrollIntoView() and scrollBy(). Used for year carousel arrows scrollBy({left:100, behavior:'smooth'}) and image carousel centering. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView (Accessed: 9 November 2026).W3Schools (2026) How To Create a Modal. Used for Page 4 - click write-up to read full + click anywhere away from box to exit. Available at: https://www.w3schools.com/howto/howto_css_modals.asp (Accessed: 9 November 2026).B. Contact Us Page - Validation Rules:MDN (2026) Regular Expressions. Used for phone 10 numbers only validation /^\d{10}$/ and email @ check includes('@'). Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions (Accessed: 9 November 2026).W3Schools (2026) How To Create Custom Select Boxes. Used for dropdown with 2 options Enquiry / Comment. Available at: https://www.w3schools.com/howto/howto_custom_select.asp (Accessed: 9 November 2026).W3Schools (2026) JavaScript Form Validation. Used for same fill-in rules as register page, required red border required-input. Available at: https://www.w3schools.com/js/js_validation.asp (Accessed: 9 November 2026).C. Gallery / Images Page 3:MDN (2026) CSS object-fit: cover. Used for b-img-card img and grid-img img to keep images uniform. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit (Accessed: 9 November 2026).CSS Tricks (2026) A Complete Guide to CSS Gradients. Used for linear-gradient(to bottom,#500000,#000) backgrounds on write-up boxes. Available at: https://css-tricks.com/css3-gradients/ (Accessed: 9 November 2026).4. Content & Club InformationKazi's Goju-Ryu Karate Club (2001-2026) Official Club Information. Danville, Pretoria - classes, history, contact details provided by client screenshots. International Karate Association (2026) Goju-Ryu Terminology - Gasshuku, Kaikos, Grading. Used for blog topics definitions.5. Tools UsedVisual Studio Code (2026) Microsoft. Code editor used to develop HTML/CSS/JS.Google Chrome DevTools (2026) Used for testing responsive design @media(max-width:700px).REFERENCING FOR YOUR REPORT - In TextIf you need to reference in your report body, use this:The blog page layout was created using CSS Grid (W3Schools, 2026) with a 130px sidebar for blog navigation and 1fr for content. The year carousel uses Flexbox for alignment and scrollBy() with smooth behaviour for arrow navigation (MDN, 2026). The write-up modal on Page 4 was implemented using a fixed position overlay with backdrop-filter blur, where clicking outside the box closes it (W3Schools, 2026).The contact page validation was implemented using JavaScript Regular Expressions (MDN, 2026) to ensure the email contains an @ symbol and the phone number is exactly 10 numeric digits only, with custom select box for message type (W3Schools, 2026).-->

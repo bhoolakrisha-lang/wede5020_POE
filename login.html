@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In - Kazi's Goju-Ryu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+
+<header class="top-header">
+  <div class="header-left">
+    <img src="images/KarateLogo.png" alt="Kazi Logo" class="logo-img">
+    <div class="logo-text">
+      <strong>KAZI'S GOJU-RYU</strong>
+      <span>Karate Club</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="user-icon"></span> Log in / Sign in
+  </div>
+</header>
+
+<main class="form-main">
+  <h1 class="page-title">Log In</h1>
+
+  <div class="center-logo">
+    <img src="images/KarateLogo.png" alt="Kazi Logo Big" class="big-logo">
+    <div class="logo-text-big">
+      <strong>KAZI'S GOJU-RYU</strong>
+      <span>Karate Club</span>
+    </div>
+  </div>
+
+  <form class="karate-form" action="welcome2.html">
+    <label>
+      Username/ email
+      <input type="text" placeholder="enter username/email address here ..." required>
+    </label>
+
+    <label>
+      Password
+      <input type="password" placeholder="enter password here..." required>
+    </label>
+
+    <button type="submit" class="karate-btn submit-btn">Log In</button>
+  </form>
+</main>
+
+</body>
+</html>
+
+<!--
+REFERENCES - Harvard Style1. Code Structure & LanguagesMozilla Developer Network (MDN) (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) CSS: Cascading Style Sheets. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) JavaScript Guide. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 9 November 2026).W3Schools (2026) HTML Tutorial. Available at: https://www.w3schools.com/html/ (Accessed: 9 November 2026).W3Schools (2026) CSS Tutorial. Available at: https://www.w3schools.com/css/ (Accessed: 9 November 2026).2. Layout & Design ImplementationW3Schools (2026) CSS Grid Layout. Used for blog-layout grid-template-columns:130px 1fr and contact contact-grid. Available at: https://www.w3schools.com/css/css_grid.asp (Accessed: 9 November 2026).W3Schools (2026) CSS Flexbox. Used for header, footer, year-carousel and image carousel alignment. Available at: https://www.w3schools.com/css/css3_flexbox.asp (Accessed: 9 November 2026).MDN (2026) backdrop-filter: blur(). Used for Page 4 write-up modal background blur effect. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter (Accessed: 9 November 2026).3. Specific Features You Asked ForA. Blog Pages 1-4:MDN (2026) scrollIntoView() and scrollBy(). Used for year carousel arrows scrollBy({left:100, behavior:'smooth'}) and image carousel centering. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView (Accessed: 9 November 2026).W3Schools (2026) How To Create a Modal. Used for Page 4 - click write-up to read full + click anywhere away from box to exit. Available at: https://www.w3schools.com/howto/howto_css_modals.asp (Accessed: 9 November 2026).B. Contact Us Page - Validation Rules:MDN (2026) Regular Expressions. Used for phone 10 numbers only validation /^\d{10}$/ and email @ check includes('@'). Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions (Accessed: 9 November 2026).W3Schools (2026) How To Create Custom Select Boxes. Used for dropdown with 2 options Enquiry / Comment. Available at: https://www.w3schools.com/howto/howto_custom_select.asp (Accessed: 9 November 2026).W3Schools (2026) JavaScript Form Validation. Used for same fill-in rules as register page, required red border required-input. Available at: https://www.w3schools.com/js/js_validation.asp (Accessed: 9 November 2026).C. Gallery / Images Page 3:MDN (2026) CSS object-fit: cover. Used for b-img-card img and grid-img img to keep images uniform. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit (Accessed: 9 November 2026).CSS Tricks (2026) A Complete Guide to CSS Gradients. Used for linear-gradient(to bottom,#500000,#000) backgrounds on write-up boxes. Available at: https://css-tricks.com/css3-gradients/ (Accessed: 9 November 2026).4. Content & Club InformationKazi's Goju-Ryu Karate Club (2001-2026) Official Club Information. Danville, Pretoria - classes, history, contact details provided by client screenshots. International Karate Association (2026) Goju-Ryu Terminology - Gasshuku, Kaikos, Grading. Used for blog topics definitions.5. Tools UsedVisual Studio Code (2026) Microsoft. Code editor used to develop HTML/CSS/JS.Google Chrome DevTools (2026) Used for testing responsive design @media(max-width:700px).REFERENCING FOR YOUR REPORT - In TextIf you need to reference in your report body, use this:The blog page layout was created using CSS Grid (W3Schools, 2026) with a 130px sidebar for blog navigation and 1fr for content. The year carousel uses Flexbox for alignment and scrollBy() with smooth behaviour for arrow navigation (MDN, 2026). The write-up modal on Page 4 was implemented using a fixed position overlay with backdrop-filter blur, where clicking outside the box closes it (W3Schools, 2026).The contact page validation was implemented using JavaScript Regular Expressions (MDN, 2026) to ensure the email contains an @ symbol and the phone number is exactly 10 numeric digits only, with custom select box for message type (W3Schools, 2026).-->

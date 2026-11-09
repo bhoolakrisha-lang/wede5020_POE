@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Kazi's Goju-Ryu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="welcome-page">
+  
+<header class="top-header" style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,#600000,#000);padding:10px 15px;color:white;">
+  <div class="header-left" style="display:flex;align-items:center;gap:8px;">
+    <img src="images/logo.png" alt="Logo" class="logo-img" style="width:35px;height:35px;border-radius:50%;">
+    <div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><br><span style="font-size:9px;">Karate Club</span></div>
+  </div>
+  <nav class="main-nav">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="history.html">History</a>
+    <a href="calendar.html">Calender</a>
+    <a href="fees.html">Fees</a>
+    <a href="register.html">Register</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-right" style="display:flex;align-items:center;gap:8px;font-size:12px;">
+    <span class="user-icon" style="width:18px;height:18px;background:white;border-radius:50%;display:inline-block;"></span>
+    <span id="headerUsername">Guest</span>
+    <button id="authBtn" style="background:#a00;border:none;color:white;font-size:9px;padding:4px 10px;border-radius:12px;cursor:pointer;margin-left:6px;">Log In</button>
+  </div>
+
+  <script>
+    // SAVES USERNAME + LOGOUT + GUEST ON EACH PAGE CORNER
+    (function(){
+      const header = document.currentScript.parentElement;
+      const nameEl = header.querySelector('#headerUsername');
+      const btn = header.querySelector('#authBtn');
+      const saved = localStorage.getItem('kazi_username');
+
+      function updateHeader(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          nameEl.textContent = current;
+          btn.textContent = 'Logout';
+          btn.style.background = '#333';
+        } else {
+          nameEl.textContent = 'Guest';
+          btn.textContent = 'Log In';
+          btn.style.background = '#a00';
+        }
+      }
+
+      updateHeader();
+
+      btn.addEventListener('click', function(){
+        const current = localStorage.getItem('kazi_username');
+        if(current){
+          // LOGOUT - Become Guest
+          localStorage.removeItem('kazi_username');
+          updateHeader();
+        } else {
+          // GO TO LOGIN
+          window.location.href = 'signin.html';
+        }
+      });
+    })();
+  </script>
+</header>
+
+<main class="blog-main">
+  <div class="blog-layout">
+    <!-- PAGE 1+2 - LEFT BLOG NAV BAR -->
+    <aside class="blog-sidebar">
+      <a href="#" class="blog-nav-item active" data-topic="gasshuku">Yearly<br>Gasshuku</a>
+      <a href="#" class="blog-nav-item" data-topic="grading">Grading</a>
+      <a href="#" class="blog-nav-item" data-topic="kaikos">Kaikos</a>
+      <a href="#" class="blog-nav-item" data-topic="yearend">Year End<br>Function</a>
+      <a href="#" class="blog-nav-item" data-topic="charity">Charity Day<br>Event</a>
+      <a href="#" class="blog-nav-item" data-topic="socials">Socials</a>
+    </aside>
+
+    <div class="blog-content">
+      <!-- PAGE 1+2 - TITLE + YEARS -->
+      <h1 class="blog-title" id="blogTitle">GASSHUKU</h1>
+
+      <div class="year-carousel-wrapper">
+        <button class="year-arrow" id="yearPrev">‹</button>
+        <div class="year-carousel" id="yearCarousel">
+          <div class="year-card small" data-year="2024">2024</div>
+          <div class="year-card medium" data-year="2025">2025</div>
+          <div class="year-card large active" data-year="2026">2026</div>
+          <div class="year-card medium" data-year="2023">2023</div>
+          <div class="year-card small" data-year="2024b">2024</div>
+        </div>
+        <button class="year-arrow" id="yearNext">›</button>
+      </div>
+
+      <h2 class="writeups-title">Write Ups</h2>
+      <div class="writeups-container" id="writeupsContainer"></div>
+
+      <!-- PAGE 3 - IMAGES SET HERE -->
+      <div class="blog-images-section" id="blogImagesSection" style="display:none;">
+        <h2 class="writeups-title">Images</h2>
+        <div class="blog-images-wrapper">
+          <div class="blog-images-carousel" id="blogImagesCarousel">
+            <div class="b-img-card small"><img src="images/blog-1.jpg" alt=""></div>
+            <div class="b-img-card large active"><img src="images/blog-2.jpg" alt=""></div>
+            <div class="b-img-card small"><img src="images/blog-3.jpg" alt=""></div>
+            <div class="b-img-card medium"><img src="images/blog-4.jpg" alt=""></div>
+            <div class="b-img-card medium"><img src="images/blog-5.jpg" alt=""></div>
+          </div>
+          <div class="b-img-controls">
+            <button id="bPrev">‹</button>
+            <span id="bCounter">2 / 5</span>
+            <button id="bNext">›</button>
+          </div>
+        </div>
+        <div class="blog-images-grid" id="blogImagesGrid">
+          <div class="grid-img"><img src="images/blog-1.jpg" alt=""></div>
+          <div class="grid-img"><img src="images/blog-2.jpg" alt=""></div>
+          <div class="grid-img"><img src="images/blog-3.jpg" alt=""></div>
+          <div class="grid-img"><img src="images/blog-4.jpg" alt=""></div>
+          <div class="grid-img"><img src="images/blog-5.jpg" alt=""></div>
+          <div class="grid-img"><img src="images/blog-6.jpg" alt=""></div>
+        </div>
+        <button class="back-to-writeups" id="backToWriteups">← Back to Write Ups</button>
+      </div>
+
+      <button class="view-images-btn" id="viewImagesBtn">View Images →</button>
+    </div>
+  </div>
+</main>
+
+<!-- PAGE 4 - CLICK WRITE-UP TO READ FULL -->
+<div class="writeup-modal" id="writeupModal">
+  <div class="writeup-modal-bg" id="writeupModalBg"></div>
+  <div class="writeup-modal-content">
+    <div class="writeup-full-box" id="writeupFullBox"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-col logo-col">
+    <div class="footer-logo"><img src="images/KarateLogo.png" alt=""><div class="logo-text"><strong>KAZI'S GOJU-RYU</strong><span>Karate Club</span></div></div>
+    <p class="footer-desc">The club started in 2001 and is still on going to this day. The club trains kids and adults, no matter what age you are.</p>
+    <div class="social-icons">
+      <span class="soc"><img src="images/media/instagram.png" alt=""><a href="https://www.instagram.com/kazis.karate/"></a></span>
+      <span class="soc"><img src="images/media/email.png" alt=""></span>
+      <span class="soc"><img src="images/media/whatsapp.png" alt=""><a href="kazikaratetech@gmailcom"></a></span>      
+      </div>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="home.html">• Home</a>
+    <a href="about.html">• About</a>
+    <a href="history.html">• History</a>
+    <a href="calendar.html">• Calender</a>
+    <a href="fees.html">• Fees</a>
+    <a href="register.html">• Reagester</a>
+    <a href="gallery.html">• Gallery</a>
+    <a href="blog.html">• Blog</a>
+    <a href="contact.html">• Contact Us</a>
+  </div>
+  <div class="footer-col">
+    <h4>Classes</h4>
+    <p class="class-day">Monday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult black belt</p>
+    <br>
+    <p class="class-day">Wednesday</p>
+      <p>16:00 - 17:00 - Kids & Junior to purple belt</p>
+      <p>17:00 - 18:30 - Junior & Adult to black belt</p>
+    <br>
+    <p class="class-day">Saturday</p>
+      <p>07:45 - 09:00 - Junior - Black belt</p>
+      <p>09:00 - 10:00 - Kids</p>
+      <p>09:45 - 10:00 - What to proper belt</p>
+      <p>10:00 - 11:00 - Grading to proper belt</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contact Us</h4>
+    <p>📍 Darul Uloom, Pretoria Multan st, Claudius  </p>
+    <p><img src="images/media/whatsapp.png" alt=""> +27 82 550 1830</p>
+    <p><img src="images/media/email.png" alt="">kazikaratetech@gmailcom<p>
+  </div>
+</footer>
+
+<script>
+// DATA FOR ALL TOPICS
+const blogData = {
+  gasshuku: {
+    2026: [
+      {title:"Onegai Shimasu", preview:"Excellent effort from all this weekend at the brown and black belt Gasshuku and grading! Consistent effort and spirit were evident throughout the weekend's keikos. That effort and dedication culminated in a fantastic performance on the grading floor by all those that attempted.<br><strong>Proud of you all! ...</strong>", full:"🥋 KAZIS KARATE CLUB - 25TH ANNIVERSARY CELEBRATION 🥋<br><br>What an absolutely remarkable and memorable day it was celebrating 25 years of Kazis Karate Club!<br><br>From the amazing food and wonderful atmosphere to the outstanding performances, inspiring speeches and the incredible spirit of togetherness, everything made this celebration truly special. It was a day filled with pride, happiness, respect and appreciation for what our dojo represents.<br><br>A very special and heartfelt thank you to Nazeem Sensei for his dedication, leadership, guidance and the countless efforts he has put into making Kazis Karate Club what it is today. Twenty-five years is a remarkable milestone, and it is a true reflection of the hard work, passion and commitment that goes into building a dojo and a family like ours.<br><br>To all the karateka, sempais and everyone who took part in the performances, speeches, preparation and organisation, thank you for contributing your time, effort"},
+      {title:"Great weekend of Keiko and Grading!", preview:"A superb effort by each and every one who attended the Gashuku. Your hard work, commitment, and perseverance throughout the weekend were outstanding. ...", full:"Great weekend of Keiko and Grading!<br><br>A superb effort by each and every one who attended the Gashuku. Your hard work, commitment, and perseverance throughout the weekend were outstanding.<br><br>Thank you to all senseis and sempais for sharing your knowledge and guiding everyone..."}
+    ],
+    2025: [{title:"2025 Gasshuku Recap", preview:"Another amazing year of training at Honbu Dojo...", full:"Full 2025 Gasshuku story..."}],
+    2024: [{title:"2024 Memories", preview:"Great Gasshuku weekend with many gradings...", full:"Full 2024 story..."}],
+    2023: [{title:"2023 Throwback", preview:"Looking back at the 2023 brown and black belt camp...", full:"Full 2023 story..."}]
+  },
+  yearend: {
+    2026: [
+      {title:"KAZIS KARATE CLUB - 25TH ANNIVERSARY CELEBRATION", preview:"What an absolutely remarkable and memorable day it was celebrating 25 years of Kazis Karate Club! From the amazing food and wonderful atmosphere to the outstanding performances...", full:"🥋 KAZIS KARATE CLUB - 25TH ANNIVERSARY CELEBRATION 🥋<br><br>What an absolutely remarkable and memorable day it was celebrating 25 years of Kazis Karate Club!<br><br>From the amazing food and wonderful atmosphere to the outstanding performances, inspiring speeches and the incredible spirit of togetherness, everything made this celebration truly special. It was a day filled with pride, happiness, respect and appreciation for what our dojo represents.<br><br>A very special and heartfelt thank you to Nazeem Sensei for his dedication, leadership, guidance and the countless efforts he has put into making Kazis Karate Club what it is today. Twenty-five years is a remarkable milestone, and it is a true reflection of the hard work, passion and commitment that goes into building a dojo and a family like ours.<br><br>To all the karateka, sempais and everyone who took part in the performances, speeches, preparation and organisation, thank you for contributing your time, effort"},
+      {title:"HUGE THANK YOU TO EVERYONE WHO ATTENDED OUR 25TH ANNIVERSARY CELEBRATION!", preview:"It was truly a beautiful and memorable event, made even more special by the love, support and presence of everyone who joined us. ...", full:"HUGE THANK YOU TO EVERYONE WHO ATTENDED OUR 25TH ANNIVERSARY CELEBRATION!<br><br>It was truly a beautiful and memorable event..."}
+    ],
+    2025: [{title:"Year End 2025", preview:"Awards and fun games for all families...", full:"Full Year End 2025..."}],
+    2024: [{title:"Year End 2024", preview:"Celebration at the dojo with demonstrations...", full:"Full Year End 2024..."}],
+    2023: [{title:"Year End 2023", preview:"Year end party with belt promotions...", full:"Full Year End 2023..."}]
+  },
+  grading: {2026:[{title:"Grading Results 2026",preview:"Congratulations to all who graded...",full:"Full grading results 2026..."}]},
+  kaikos: {2026:[{title:"Kaikos Training",preview:"Intensive kaikos weekend...",full:"Full kaikos story..."}]},
+  charity: {2026:[{title:"Charity Day Event",preview:"Thank you to all who brought donations...",full:"Full charity day..."}]},
+  socials: {2026:[{title:"Socials 2026",preview:"Great social gathering after training...",full:"Full socials..."}]}
+};
+
+let currentTopic='gasshuku';
+let currentYear='2026';
+
+const titleEl=document.getElementById('blogTitle');
+const container=document.getElementById('writeupsContainer');
+const yearCards=document.querySelectorAll('.year-card');
+const sidebarItems=document.querySelectorAll('.blog-nav-item');
+
+function renderWriteUps(){
+  const topicData=blogData[currentTopic]||blogData['gasshuku'];
+  const yearData=topicData[currentYear]||topicData['2026']||[];
+  if(yearData.length===0){ container.innerHTML=`<div class="writeup-box">No write ups for ${currentYear} yet.</div>`; return; }
+  container.innerHTML=yearData.map((item,i)=>`<div class="writeup-box clickable" data-index="${i}"><p><strong>${item.title}</strong><br>${item.preview}</p></div>`).join('');
+  container.querySelectorAll('.writeup-box').forEach(box=>{
+    box.addEventListener('click',()=>{
+      const idx=parseInt(box.dataset.index);
+      openWriteupModal(yearData[idx]);
+    });
+  });
+}
+
+// PAGE 1+2 - SIDEBAR + YEAR CLICK
+sidebarItems.forEach(item=>{
+  item.addEventListener('click',(e)=>{
+    e.preventDefault();
+    sidebarItems.forEach(i=>i.classList.remove('active'));
+    item.classList.add('active');
+    currentTopic=item.dataset.topic;
+    titleEl.textContent=currentTopic==='yearend'?'Year End Function':currentTopic==='charity'?'Charity Day Event':currentTopic.toUpperCase();
+    // show writeups, hide images
+    document.getElementById('writeupsContainer').style.display='flex';
+    document.querySelector('.writeups-title').style.display='block';
+    document.getElementById('blogImagesSection').style.display='none';
+    document.getElementById('viewImagesBtn').style.display='block';
+    renderWriteUps();
+  });
+});
+yearCards.forEach(card=>{
+  card.addEventListener('click',()=>{
+    yearCards.forEach(c=>c.classList.remove('active','large'));
+    card.classList.add('active','large');
+    let y=card.dataset.year; if(y==='2024b') y='2024';
+    currentYear=y; renderWriteUps();
+  });
+});
+document.getElementById('yearPrev').addEventListener('click',()=>document.getElementById('yearCarousel').scrollBy({left:-100,behavior:'smooth'}));
+document.getElementById('yearNext').addEventListener('click',()=>document.getElementById('yearCarousel').scrollBy({left:100,behavior:'smooth'}));
+
+// PAGE 3 - VIEW IMAGES
+document.getElementById('viewImagesBtn').addEventListener('click',()=>{
+  document.getElementById('writeupsContainer').style.display='none';
+  document.querySelector('.writeups-title').style.display='none';
+  document.getElementById('viewImagesBtn').style.display='none';
+  document.getElementById('blogImagesSection').style.display='block';
+});
+document.getElementById('backToWriteups').addEventListener('click',()=>{
+  document.getElementById('blogImagesSection').style.display='none';
+  document.getElementById('writeupsContainer').style.display='flex';
+  document.querySelector('.writeups-title').style.display='block';
+  document.getElementById('viewImagesBtn').style.display='block';
+});
+
+// PAGE 3 CAROUSEL
+const bCards=document.querySelectorAll('.b-img-card');
+let bIdx=1;
+function updateBCarousel(){
+  bCards.forEach((c,i)=>{
+    c.classList.remove('large','small','medium','active');
+    if(i===bIdx){c.classList.add('large','active');}
+    else if(Math.abs(i-bIdx)===1){c.classList.add('small');}
+    else{c.classList.add('medium');}
+  });
+  document.getElementById('bCounter').textContent=`${bIdx+1} / ${bCards.length}`;
+  bCards[bIdx].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+}
+document.getElementById('bNext').addEventListener('click',()=>{bIdx=(bIdx+1)%bCards.length;updateBCarousel();});
+document.getElementById('bPrev').addEventListener('click',()=>{bIdx=(bIdx-1+bCards.length)%bCards.length;updateBCarousel();});
+bCards.forEach((card,i)=>{card.addEventListener('click',()=>{bIdx=i;updateBCarousel();});});
+updateBCarousel();
+
+// PAGE 4 - MODAL
+function openWriteupModal(data){
+  document.getElementById('writeupFullBox').innerHTML=`<p class="full-title">🥋 ${data.title.toUpperCase()} 🥋</p><p>${data.full}</p>`;
+  document.getElementById('writeupModal').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeWriteupModal(){document.getElementById('writeupModal').style.display='none';document.body.style.overflow='auto';}
+document.getElementById('writeupModalBg').addEventListener('click',closeWriteupModal);
+document.getElementById('writeupModal').addEventListener('click',(e)=>{if(e.target.id==='writeupModal') closeWriteupModal();});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape') closeWriteupModal();});
+
+renderWriteUps();
+</script>
+</body>
+</html>
+
+<script>
+// THIS SHOWS THE SAVED USERNAME IN YOUR CIRCLED AREA
+function updateHeaderUsername(){
+  const savedName = localStorage.getItem('kazi_username');
+  const headerName = document.getElementById('headerUsername');
+  if(headerName && savedName){
+    headerName.textContent = savedName;
+  }
+}
+updateHeaderUsername();
+
+// Optional: logout
+function logout(){
+  localStorage.removeItem('kazi_username');
+  document.getElementById('headerUsername').textContent = 'username';
+  window.location.href = 'signin.html';
+}
+</script>
+
+<!--
+REFERENCES - Harvard Style1. Code Structure & LanguagesMozilla Developer Network (MDN) (2026) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) CSS: Cascading Style Sheets. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 9 November 2026).Mozilla Developer Network (MDN) (2026) JavaScript Guide. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 9 November 2026).W3Schools (2026) HTML Tutorial. Available at: https://www.w3schools.com/html/ (Accessed: 9 November 2026).W3Schools (2026) CSS Tutorial. Available at: https://www.w3schools.com/css/ (Accessed: 9 November 2026).2. Layout & Design ImplementationW3Schools (2026) CSS Grid Layout. Used for blog-layout grid-template-columns:130px 1fr and contact contact-grid. Available at: https://www.w3schools.com/css/css_grid.asp (Accessed: 9 November 2026).W3Schools (2026) CSS Flexbox. Used for header, footer, year-carousel and image carousel alignment. Available at: https://www.w3schools.com/css/css3_flexbox.asp (Accessed: 9 November 2026).MDN (2026) backdrop-filter: blur(). Used for Page 4 write-up modal background blur effect. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter (Accessed: 9 November 2026).3. Specific Features You Asked ForA. Blog Pages 1-4:MDN (2026) scrollIntoView() and scrollBy(). Used for year carousel arrows scrollBy({left:100, behavior:'smooth'}) and image carousel centering. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView (Accessed: 9 November 2026).W3Schools (2026) How To Create a Modal. Used for Page 4 - click write-up to read full + click anywhere away from box to exit. Available at: https://www.w3schools.com/howto/howto_css_modals.asp (Accessed: 9 November 2026).B. Contact Us Page - Validation Rules:MDN (2026) Regular Expressions. Used for phone 10 numbers only validation /^\d{10}$/ and email @ check includes('@'). Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions (Accessed: 9 November 2026).W3Schools (2026) How To Create Custom Select Boxes. Used for dropdown with 2 options Enquiry / Comment. Available at: https://www.w3schools.com/howto/howto_custom_select.asp (Accessed: 9 November 2026).W3Schools (2026) JavaScript Form Validation. Used for same fill-in rules as register page, required red border required-input. Available at: https://www.w3schools.com/js/js_validation.asp (Accessed: 9 November 2026).C. Gallery / Images Page 3:MDN (2026) CSS object-fit: cover. Used for b-img-card img and grid-img img to keep images uniform. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit (Accessed: 9 November 2026).CSS Tricks (2026) A Complete Guide to CSS Gradients. Used for linear-gradient(to bottom,#500000,#000) backgrounds on write-up boxes. Available at: https://css-tricks.com/css3-gradients/ (Accessed: 9 November 2026).4. Content & Club InformationKazi's Goju-Ryu Karate Club (2001-2026) Official Club Information. Danville, Pretoria - classes, history, contact details provided by client screenshots. International Karate Association (2026) Goju-Ryu Terminology - Gasshuku, Kaikos, Grading. Used for blog topics definitions.5. Tools UsedVisual Studio Code (2026) Microsoft. Code editor used to develop HTML/CSS/JS.Google Chrome DevTools (2026) Used for testing responsive design @media(max-width:700px).REFERENCING FOR YOUR REPORT - In TextIf you need to reference in your report body, use this:The blog page layout was created using CSS Grid (W3Schools, 2026) with a 130px sidebar for blog navigation and 1fr for content. The year carousel uses Flexbox for alignment and scrollBy() with smooth behaviour for arrow navigation (MDN, 2026). The write-up modal on Page 4 was implemented using a fixed position overlay with backdrop-filter blur, where clicking outside the box closes it (W3Schools, 2026).The contact page validation was implemented using JavaScript Regular Expressions (MDN, 2026) to ensure the email contains an @ symbol and the phone number is exactly 10 numeric digits only, with custom select box for message type (W3Schools, 2026).-->
